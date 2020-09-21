@@ -63,14 +63,12 @@ function randomDigits() {
         randomDigits();
     } else {
         comDigits = randomDigitStr;
-        console.log(comDigits + ' ' + userDigits);
         createLists();
     };
 };
 
 function pushUserDigits() {
     userDigitsArr.push(userDigits);
-    console.log(userDigitsArr);
     input.value = "";
     userDigitsArr.length === 1 ? randomDigits() : createLists();
 };
