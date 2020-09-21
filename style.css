@@ -1,0 +1,45 @@
+@import './reset.css';
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 10px;
+    text-align: center;
+}
+
+.baseball-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.baseball__result-container {
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.baseball__result__SBO {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

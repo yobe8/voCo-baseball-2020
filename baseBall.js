@@ -6,13 +6,37 @@ let userDigitsArr = [],
     userDigits,
     comDigits;
 
+function resultAlert(s) {
+    if (s === 3) {
+        alert('축하합니다. 삼진 아웃!(Congratulation! You are win!)')
+    } else if (userDigitsArr.length === 9) {
+        alert('마지막 기회!(Last Chance!)')
+    } else if (userDigitsArr.length > 9) {
+        alert(`아쉽네요, 정답은 ${comDigits}. 재도전 콜?\n(I\'m sorry, but you lose. How about trying onemore.`)
+        input.setAttribute('disabled', '');
+    }
+}
+
+function gameScore(s, b, o) {
+    const strike = document.getElementById('strike'),
+        ball = document.getElementById('ball'),
+        out = document.getElementById('out');
+
+    strike.innerText = `Strike ${s}`;
+    ball.innerText = `Ball ${b}`;
+    out.innerText = `Out ${o}`;
+
+    resultAlert(s);
+
+}
+
 function checkSBO() {
     let strikeCount = 0,
         ballCount = 0,
         outCount = 0;
 
     for (var s = 0; s < 3; s++) {
-        if(comDigits[s] === userDigits[s]) {
+        if (comDigits[s] === userDigits[s]) {
             strikeCount++;
         } else if (userDigits.includes(comDigits[s])) {
             ballCount++;
@@ -20,11 +44,10 @@ function checkSBO() {
             outCount++;
         }
     }
-    console.log(strikeCount, ballCount, outCount);
+    gameScore(strikeCount, ballCount, outCount);
 }
 
 function createLists() {
-    console.log('good');
     const li = document.createElement('li')
     li.innerText = userDigits;
     orderList.appendChild(li);
