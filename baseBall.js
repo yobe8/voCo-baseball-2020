@@ -2,15 +2,14 @@ const input = document.querySelector('#digits'),
     form = document.querySelector('form');
 
 let userCounts= [];
+let comNumbers;
 
-const USERCOUNTS_LS = 'userCounts'
-const RANDOMDIGITS_LS = 'comDigits'
-
-function resultAlert() {
-    console.log('resultAlert');
+function resultAlert(userNumbers) {
+        comNumbers !== userNumbers ? console.log('같지않음') : console.log('같음');
+        console.log(comNumbers);
 }
 
-function randomDigits() {
+function randomDigits(userNumbers) {
     const comDigits = Math.floor(Math.random()*1000),
     comDigitsStr = comDigits.toString();
     if(comDigitsStr.length === 2) {
@@ -18,7 +17,8 @@ function randomDigits() {
     }   else if(comDigitsStr.includes('0')) {
         randomDigits();
     } else {
-         return;
+         comNumbers = comDigitsStr;
+         resultAlert(userNumbers);
     }
 }
 
@@ -32,7 +32,7 @@ function warningAlerts(event) {
     } else {
         userCounts.push(userDigits);
         input.value="";
-        userCounts.length === 1 ? randomDigits() : resultAlert();
+        userCounts.length === 1 ? randomDigits(userDigits) : resultAlert(userDigits);
     };
 };
 
