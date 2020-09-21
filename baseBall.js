@@ -1,38 +1,43 @@
 const input = document.querySelector('#digits'),
     form = document.querySelector('form');
 
-let userCounts= [];
-let comNumbers;
+let userDigitsArr= [],
+userDigits,
+comDigits;
 
-function resultAlert(userNumbers) {
-        comNumbers !== userNumbers ? console.log('같지않음') : console.log('같음');
-        console.log(comNumbers);
+function resultText() {
+
 }
 
-function randomDigits(userNumbers) {
-    const comDigits = Math.floor(Math.random()*1000),
-    comDigitsStr = comDigits.toString();
-    if(comDigitsStr.length === 2) {
+function randomDigits() {
+    const randomDigit = Math.floor(Math.random()*1000),
+    randomDigitStr = randomDigit.toString();
+    if(randomDigitStr.length === 2) {
         randomDigits();
-    }   else if(comDigitsStr.includes('0')) {
+    }   else if(randomDigitStr.includes('0')) {
         randomDigits();
     } else {
-         comNumbers = comDigitsStr;
-         resultAlert(userNumbers);
-    }
-}
+         comDigits = randomDigitStr;
+         console.log(comDigits+' '+userDigits);
+         resultText();
+    };
+};
+
+function pushUserDigits() {
+    userDigitsArr.push(userDigits);
+    input.value="";
+    userDigitsArr.length === 1 ? randomDigits() : resultText();
+};
 
 function warningAlerts(event) {
     event.preventDefault();
-    let userDigits = input.value; //typeof string
+    userDigits = input.value; //typeof string
     if (userDigits.length !== 3) {
         alert('세자리 숫자를 입력하세요(Give me 3 digits).');
     } else if (userDigits.includes('0')) {
-        alert('1이상의 숫자를 입력하세요.');
+        alert('1 이상의 숫자를 입력하세요.(give me one or above');
     } else {
-        userCounts.push(userDigits);
-        input.value="";
-        userCounts.length === 1 ? randomDigits(userDigits) : resultAlert(userDigits);
+        pushUserDigits();
     };
 };
 

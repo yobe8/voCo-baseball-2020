@@ -8,11 +8,22 @@
 </head>
 
 <body>
-    <form>
-        <input id="digits" type="number" placeholder="세자리 숫자(only 3digits).">
-        <input type="submit" value="Enter">
-    </form>
+    <div class="baseball-container">
+        <form class="baseball__form">
+            <input id="digits" type="number" placeholder="세자리 숫자(only 3digits).">
+            <input type="submit" value="Enter">
+        </form>
+        <div class="baseball__result-container">
+            <ol class="baseball__result__userDigits"></ol>
+            <span class="baseball__result__SBO">
+                <h4 id="strike"></h4>
+                <h4 id="ball"></h4>
+                <h4 id="out"></h4>
+            </span>
+        </div>
+    </div>
 </body>
 
 <script src="./baseBall.js"></script>
+
 </html>
